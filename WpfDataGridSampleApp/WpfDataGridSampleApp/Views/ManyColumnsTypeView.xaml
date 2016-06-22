@@ -4,11 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:WpfDataGridSampleApp.Views"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:Prism="http://prismlibrary.com/"
              Prism:ViewModelLocator.AutoWireViewModel="True"
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="CollectionViewSourceGenders"
+                              Source="{Binding Genders}" />
+        <System:String x:Key="Google">http://google.co.jp</System:String>
+    </UserControl.Resources>
     <Grid>
         <DataGrid ItemsSource="{Binding People}"
                   AutoGenerateColumns="False">
@@ -16,9 +22,27 @@
                 <DataGridTextColumn Header="テキスト"
                                     Binding="{Binding Name}" />
                 <DataGridComboBoxColumn Header="コンボ"
-                                        ItemsSource="{Binding Genders}" 
+                                        ItemsSource="{Binding Source={StaticResource CollectionViewSourceGenders}}" 
                                         SelectedValuePath="Enum"
-                                        DisplayMemberPath="Label"/>
+                                        DisplayMemberPath="Label"
+                                        SelectedValueBinding="{Binding Gender}"/>
+                <DataGridCheckBoxColumn Header="チェックボックス"
+                                        Binding="{Binding HasErrors, Mode=OneWay}" />
+                <DataGridHyperlinkColumn Header="ハイパーリンク"
+                                         ContentBinding="{Binding Name}" 
+                                         Binding="{Binding Source={StaticResource Google}}" />
+                <DataGridTemplateColumn Header="テンプレート">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Birthday, StringFormat=yyyy/MM/dd}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <DatePicker SelectedDate="{Binding Birthday, Mode=TwoWay}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

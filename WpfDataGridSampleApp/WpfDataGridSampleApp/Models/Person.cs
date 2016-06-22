@@ -12,7 +12,7 @@ using System.Runtime.CompilerServices;
 
 namespace WpfDataGridSampleApp.Models
 {
-    public class Person : BindableBase, INotifyDataErrorInfo
+    public class Person : BindableBase, INotifyDataErrorInfo, IEditableObject
     {
         private ErrorsContainer<string> ErrorsContainer { get; }
 
@@ -45,6 +45,14 @@ namespace WpfDataGridSampleApp.Models
             set { this.SetProperty(ref this.gender, value); }
         }
 
+        private DateTime birthday;
+
+        public DateTime Birthday
+        {
+            get { return this.birthday; }
+            set { this.SetProperty(ref this.birthday, value); }
+        }
+
         public bool HasErrors => this.ErrorsContainer.HasErrors;
 
         public Person()
@@ -71,6 +79,32 @@ namespace WpfDataGridSampleApp.Models
             {
                 this.ErrorsContainer.ClearErrors(propertyName);
             }
+        }
+
+        private Person CacheData { get; set; }
+
+        public void BeginEdit()
+        {
+            this.CacheData = new Person();
+            this.CacheData.Name = this.Name;
+            this.CacheData.Age = this.Age;
+            this.CacheData.Gender = this.Gender;
+            this.CacheData.Birthday = this.Birthday;
+        }
+
+        public void EndEdit()
+        {
+            this.CacheData = null;
+        }
+
+        public void CancelEdit()
+        {
+            if (this.CacheData == null) { return; }
+            this.Name = this.CacheData.Name;
+            this.Age = this.CacheData.Age;
+            this.Gender = this.CacheData.Gender;
+            this.Birthday = this.CacheData.Birthday;
+            this.CacheData = null;
         }
     }
 }
