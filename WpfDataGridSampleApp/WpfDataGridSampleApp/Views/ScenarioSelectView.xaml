@@ -10,17 +10,30 @@
              d:DesignHeight="300"
              d:DesignWidth="300">
     <Grid>
-        <ItemsControl ItemsSource="{Binding Scenarios}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock>
+        <ScrollViewer>
+            <ItemsControl ItemsSource="{Binding Scenarios}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
                         <Hyperlink Command="{Binding DataContext.ScenarioSelectCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                   CommandParameter="{Binding}">
+                                   CommandParameter="{Binding}"
+                                   IsEnabled="{Binding DataContext.IsLoaded.Value, RelativeSource={RelativeSource AncestorType=ItemsControl}}">
                             <Run Text="{Binding Name, Mode=OneWay}" />
                         </Hyperlink>
-                    </TextBlock>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                        </TextBlock>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <Border Visibility="{Binding IsLoadedVisibility.Value}"
+                Background="LightGray"
+                Opacity="0.7">
+            <Grid>
+                <ProgressBar VerticalAlignment="Center"
+                             Maximum="1000000"
+                             Value="{Binding LoadedCount.Value, Mode=OneWay}"
+                             Height="25"/>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

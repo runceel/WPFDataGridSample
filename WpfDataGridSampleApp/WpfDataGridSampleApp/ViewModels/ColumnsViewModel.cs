@@ -12,50 +12,15 @@ using WpfDataGridSampleApp.Models;
 
 namespace WpfDataGridSampleApp.ViewModels
 {
-    public class ColumnsViewModel : ViewModelBase, INavigationAware
+    public class ColumnsViewModel : ViewModelBase
     {
-        private CompositeDisposable Disposable { get; } = new CompositeDisposable();
-
-        private Main Model { get; }
-
-        public ReactiveProperty<Scenario> Scenario { get; }
-
-        public ReadOnlyReactiveCollection<Person> People { get; }
-
         public ReadOnlyReactiveCollection<EnumLabelPair<Gender>> Genders { get; }
 
-        public ColumnsViewModel(Main model) : base("")
+        public ColumnsViewModel(Main model) : base(model)
         {
-            this.Model = model;
-
-            this.Scenario = new ReactiveProperty<Scenario>();
-            this.Scenario
-                .Where(x => x != null)
-                .Subscribe(x => this.Title.Value = x.Name)
-                .AddTo(Disposable);
-
-            this.People = this.Model
-                .People
-                .ToReadOnlyReactiveCollection();
-
             this.Genders = this.Model
                 .Genders
                 .ToReadOnlyReactiveCollection();
-        }
-
-        public bool IsNavigationTarget(NavigationContext navigationContext)
-        {
-            return true;
-        }
-
-        public void OnNavigatedFrom(NavigationContext navigationContext)
-        {
-            this.Disposable.Dispose();
-        }
-
-        public void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            this.Scenario.Value = (Scenario)navigationContext.Parameters["scenario"];
         }
     }
 }
