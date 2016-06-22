@@ -12,7 +12,14 @@
     <Grid>
         <DataGrid ItemsSource="{Binding People}"
                   AutoGenerateColumns="False">
-            
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="テキスト"
+                                    Binding="{Binding Name}" />
+                <DataGridComboBoxColumn Header="コンボ"
+                                        ItemsSource="{Binding Genders}" 
+                                        SelectedValuePath="Enum"
+                                        DisplayMemberPath="Label"/>
+            </DataGrid.Columns>
         </DataGrid>
     </Grid>
 </UserControl>
