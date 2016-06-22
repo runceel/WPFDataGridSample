@@ -11,7 +11,7 @@ namespace WpfDataGridSampleApp.Models
 {
     public class Main : BindableBase
     {
-        private static int DataCount { get; } = 10000;
+        private static int DataCount { get; } = 1000000;
 
         public ObservableCollection<Scenario> Scenarios { get; } = new ObservableCollection<Scenario>(new[] 
         {
@@ -25,6 +25,8 @@ namespace WpfDataGridSampleApp.Models
             new Scenario { Name = "パフォーマンス(改善)", ViewName = "LargeColumnPerformanceImprovementView" },
             new Scenario { Name = "UseLayoutRounding", ViewName = "UseLayoutRoundingView" },
             new Scenario { Name = "スタイリング", ViewName = "StylingView" },
+            new Scenario { Name = "グルーピング", ViewName = "GroupingView" },
+            new Scenario { Name = "グルーピング(改善)", ViewName = "GroupingPerformanceImprovementView" },
         });
 
         public ReadOnlyObservableCollection<EnumLabelPair<Gender>> Genders { get; } = new ReadOnlyObservableCollection<EnumLabelPair<Gender>>(

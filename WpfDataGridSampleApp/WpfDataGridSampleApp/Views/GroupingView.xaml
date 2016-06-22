@@ -1,0 +1,42 @@
+﻿<UserControl x:Class="WpfDataGridSampleApp.Views.GroupingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WpfDataGridSampleApp.Views"
+             xmlns:Prism="http://prismlibrary.com/"
+             xmlns:Converters="clr-namespace:WpfDataGridSampleApp.Converters"
+             mc:Ignorable="d"
+             Prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="CollectionViewSourcePeople"
+                              Source="{Binding People}">
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="Age">
+                    <PropertyGroupDescription.Converter>
+                        <Converters:GenerationConverter />
+                    </PropertyGroupDescription.Converter>
+                </PropertyGroupDescription>
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+    </UserControl.Resources>
+    <Grid>
+        <DataGrid ItemsSource="{Binding Source={StaticResource CollectionViewSourcePeople}}"
+                  VirtualizingPanel.IsVirtualizingWhenGrouping="True">
+            <DataGrid.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock>
+                                <Run Text="{Binding Name, Mode=OneWay}" />
+                                <Run Text="0代" />
+                            </TextBlock>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
+        </DataGrid>
+    </Grid>
+</UserControl>
