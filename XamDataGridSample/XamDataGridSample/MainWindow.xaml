@@ -26,18 +26,30 @@
             </Custom:XamDataGrid.FieldSettings>
             <Custom:XamDataGrid.FieldLayouts>
                 <Custom:FieldLayout>
+                    <Custom:FieldLayout.Settings>
+                        <Custom:FieldLayoutSettings AutoArrangeCells="Never" />
+                    </Custom:FieldLayout.Settings>
                     <Custom:FieldLayout.SortedFields>
                         <Custom:FieldSortDescription FieldName="Age"
                                                      IsGroupBy="True" />
                     </Custom:FieldLayout.SortedFields>
                     <Custom:Field Name="Name"
-                                  Label="名前" />
+                                  Label="名前" 
+                                  Row="0"
+                                  Column="0"
+                                  ColumnSpan="2"/>
                     <Custom:Field Name="Age"
-                                  Label="年齢" />
+                                  Label="年齢" 
+                                  Row="1"
+                                  Column="0"/>
                     <Custom:Field Name="Birthday"
-                                  Label="誕生日" />
+                                  Label="誕生日" 
+                                  Row="1"
+                                  Column="1"/>
                     <Custom:Field Name="Gender"
-                                  Label="性別" />
+                                  Label="性別"
+                                  RowSpan="2"
+                                  Column="2"/>
                 </Custom:FieldLayout>
             </Custom:XamDataGrid.FieldLayouts>
         </Custom:XamDataGrid>
