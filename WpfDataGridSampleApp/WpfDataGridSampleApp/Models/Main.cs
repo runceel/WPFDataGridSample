@@ -22,6 +22,7 @@ namespace WpfDataGridSampleApp.Models
             new Scenario { Name = "固定列ヘッダー", ViewName = "FrozenColumnCountView" },
             new Scenario { Name = "行詳細", ViewName = "RowDetailView" },
             new Scenario { Name = "パフォーマンス", ViewName = "LargeColumnPerformanceView" },
+            new Scenario { Name = "全選択無効化", ViewName = "DisableAllSelectView" },
             new Scenario { Name = "パフォーマンス(改善)", ViewName = "LargeColumnPerformanceImprovementView" },
             new Scenario { Name = "UseLayoutRounding", ViewName = "UseLayoutRoundingView" },
             new Scenario { Name = "スタイリング", ViewName = "StylingView" },
