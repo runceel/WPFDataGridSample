@@ -26,7 +26,8 @@ namespace WpfDataGridSampleApp.Models
             new Scenario { Name = "UseLayoutRounding", ViewName = "UseLayoutRoundingView" },
             new Scenario { Name = "スタイリング", ViewName = "StylingView" },
             new Scenario { Name = "グルーピング", ViewName = "GroupingView" },
-            new Scenario { Name = "グルーピング(改善)", ViewName = "GroupingPerformanceImprovementView" },
+            new Scenario { Name = "グルーピング(改善?)", ViewName = "GroupingPerformanceImprovementView" },
+            new Scenario { Name = "セル結合", ViewName = "MultiRowMultiColumnView" },
         });
 
         public ReadOnlyObservableCollection<EnumLabelPair<Gender>> Genders { get; } = new ReadOnlyObservableCollection<EnumLabelPair<Gender>>(

@@ -139,6 +139,7 @@
     <Compile Include="ViewModels\LargeColumnPerformanceViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\ManyColumnsTypeViewModel.cs" />
+    <Compile Include="ViewModels\MultiRowMultiColumnViewModel.cs" />
     <Compile Include="ViewModels\RowDetailViewModel.cs" />
     <Compile Include="ViewModels\ScenarioSelectViewModel.cs" />
     <Compile Include="ViewModels\ScenarioViewModel.cs" />
@@ -174,6 +175,9 @@
     </Compile>
     <Compile Include="Views\ManyColumnsTypeView.xaml.cs">
       <DependentUpon>ManyColumnsTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MultiRowMultiColumnView.xaml.cs">
+      <DependentUpon>MultiRowMultiColumnView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RowDetailView.xaml.cs">
       <DependentUpon>RowDetailView.xaml</DependentUpon>
@@ -254,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ManyColumnsTypeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MultiRowMultiColumnView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
