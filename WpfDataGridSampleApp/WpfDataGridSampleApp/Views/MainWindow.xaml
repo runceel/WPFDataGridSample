@@ -8,7 +8,7 @@
         Prism:ViewModelLocator.AutoWireViewModel="True"
         mc:Ignorable="d"
         Title="WPF DataGrid sample"
-        Height="600"
+        Height="500"
         Width="800">
     <Grid>
         <TabControl Prism:RegionManager.RegionName="MainRegion">

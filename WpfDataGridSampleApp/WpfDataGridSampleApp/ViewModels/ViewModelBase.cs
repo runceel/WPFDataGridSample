@@ -43,7 +43,7 @@ namespace WpfDataGridSampleApp.ViewModels
 
         public virtual bool IsNavigationTarget(NavigationContext navigationContext) => true;
 
-        public void OnNavigatedFrom(NavigationContext navigationContext)
+        public virtual void OnNavigatedFrom(NavigationContext navigationContext)
         {
             this.Disposable.Dispose();
         }
