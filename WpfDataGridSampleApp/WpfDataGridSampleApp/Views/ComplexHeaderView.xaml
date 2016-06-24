@@ -28,6 +28,8 @@
                     Value="{x:Null}" />
             <Setter Property="RowValidationErrorTemplate"
                     Value="{x:Null}" />
+            <Setter Property="HeadersVisibility" 
+                    Value="Column"/>
             <Setter Property="ColumnHeaderStyle">
                 <Setter.Value>
                     <Style TargetType="{x:Type DataGridColumnHeader}">
@@ -53,7 +55,6 @@
         </Grid.RowDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding RowHeaderActualWidth, ElementName=DataGrid}" />
                 <ColumnDefinition Width="{Binding ActualWidth, ElementName=Col1}" />
                 <ColumnDefinition Width="{Binding ActualWidth, ElementName=Col2}" />
                 <ColumnDefinition Width="{Binding ActualWidth, ElementName=Col3}" />
@@ -61,22 +62,20 @@
                 <ColumnDefinition Width="{Binding ActualWidth, ElementName=Col5}" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
-            <Border Style="{StaticResource BorderGridHeader}" 
-                    BorderThickness="1,1,1,1" />
-            <Border Grid.Column="1"
+            <Border Grid.Column="0"
                     Grid.ColumnSpan="3"
                     Style="{StaticResource BorderGridHeader}">
                 <TextBlock Text="ヘッダーグループ1"
                            HorizontalAlignment="Center" />
             </Border>
-            <Border Grid.Column="4"
+            <Border Grid.Column="3"
                     Grid.ColumnSpan="2"
                     Style="{StaticResource BorderGridHeader}">
                 <TextBlock Text="ヘッダーグループ2"
                            HorizontalAlignment="Center" />
             </Border>
             <Border Style="{StaticResource BorderGridHeader}"
-                    Grid.Column="6" />
+                    Grid.Column="5" />
         </Grid>
         <DataGrid x:Name="DataGrid"
                   ItemsSource="{Binding People}"

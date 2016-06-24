@@ -11,7 +11,7 @@ namespace WpfDataGridSampleApp.Models
 {
     public class Main : BindableBase
     {
-        private static int DataCount { get; } = 10000;
+        private static int DataCount { get; } = 1000000;
 
         public ObservableCollection<Scenario> Scenarios { get; } = new ObservableCollection<Scenario>(new[] 
         {

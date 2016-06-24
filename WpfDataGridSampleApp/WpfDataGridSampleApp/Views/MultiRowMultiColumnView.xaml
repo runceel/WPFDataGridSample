@@ -12,7 +12,9 @@
     <Grid>
         <DataGrid ItemsSource="{Binding People}"
                   AutoGenerateColumns="False"
-                  IsReadOnly="True">
+                  IsReadOnly="True"
+                  HorizontalGridLinesBrush="{StaticResource {x:Static SystemColors.ControlBrushKey}}"
+                  VerticalGridLinesBrush="{StaticResource {x:Static SystemColors.ControlBrushKey}}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="名前"
                                     Binding="{Binding Name}" />
