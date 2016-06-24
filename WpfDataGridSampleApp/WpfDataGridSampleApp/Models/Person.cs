@@ -56,7 +56,11 @@ namespace WpfDataGridSampleApp.Models
 
         public Person()
         {
-            this.ErrorsContainer = new ErrorsContainer<string>(x => this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(x)));
+            this.ErrorsContainer = new ErrorsContainer<string>(x =>
+            {
+                this.ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(x));
+                this.OnPropertyChanged(nameof(HasErrors));
+            });
         }
 
         public IEnumerable GetErrors(string propertyName)

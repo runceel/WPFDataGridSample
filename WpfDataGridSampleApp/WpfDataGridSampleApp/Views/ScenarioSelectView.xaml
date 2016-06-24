@@ -11,7 +11,8 @@
              d:DesignWidth="300">
     <Grid>
         <ScrollViewer>
-            <ItemsControl ItemsSource="{Binding Scenarios}">
+            <ItemsControl ItemsSource="{Binding Scenarios}"
+                          FontSize="24">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -32,7 +33,7 @@
                 <ProgressBar VerticalAlignment="Center"
                              Maximum="1000000"
                              Value="{Binding LoadedCount.Value, Mode=OneWay}"
-                             Height="25"/>
+                             Height="25" />
             </Grid>
         </Border>
     </Grid>
