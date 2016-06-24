@@ -1,0 +1,105 @@
+﻿<UserControl xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:WpfDataGridSampleApp.Views"
+             xmlns:Prism="http://prismlibrary.com/"
+             xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2"
+             x:Class="WpfDataGridSampleApp.Views.ComplexHeaderView"
+             Prism:ViewModelLocator.AutoWireViewModel="True"
+             mc:Ignorable="d"
+             d:DesignHeight="300"
+             d:DesignWidth="300">
+    <UserControl.Resources>
+        <Style x:Key="BorderGridHeader"
+               TargetType="{x:Type Border}">
+            <Setter Property="Background"
+                    Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+            <Setter Property="Padding"
+                    Value="5" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="BorderBrush"
+                    Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+        </Style>
+        <Style x:Key="DataGridStyle"
+               TargetType="{x:Type DataGrid}">
+            <Setter Property="RowHeaderTemplate"
+                    Value="{x:Null}" />
+            <Setter Property="RowValidationErrorTemplate"
+                    Value="{x:Null}" />
+            <Setter Property="ColumnHeaderStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background"
+                                Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" />
+                        <Setter Property="BorderThickness"
+                                Value="1" />
+                        <Setter Property="BorderBrush"
+                                Value="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
+                        <Setter Property="Padding"
+                                Value="5" />
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="BorderThickness"
+                    Value="1,0,1,1" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding RowHeaderActualWidth, ElementName=DataGrid}" />
+                <ColumnDefinition Width="{Binding ActualWidth, ElementName=Col1}" />
+                <ColumnDefinition Width="{Binding ActualWidth, ElementName=Col2}" />
+                <ColumnDefinition Width="{Binding ActualWidth, ElementName=Col3}" />
+                <ColumnDefinition Width="{Binding ActualWidth, ElementName=Col4}" />
+                <ColumnDefinition Width="{Binding ActualWidth, ElementName=Col5}" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Border Style="{StaticResource BorderGridHeader}" 
+                    BorderThickness="1,1,1,1" />
+            <Border Grid.Column="1"
+                    Grid.ColumnSpan="3"
+                    Style="{StaticResource BorderGridHeader}">
+                <TextBlock Text="ヘッダーグループ1"
+                           HorizontalAlignment="Center" />
+            </Border>
+            <Border Grid.Column="4"
+                    Grid.ColumnSpan="2"
+                    Style="{StaticResource BorderGridHeader}">
+                <TextBlock Text="ヘッダーグループ2"
+                           HorizontalAlignment="Center" />
+            </Border>
+            <Border Style="{StaticResource BorderGridHeader}"
+                    Grid.Column="6" />
+        </Grid>
+        <DataGrid x:Name="DataGrid"
+                  ItemsSource="{Binding People}"
+                  AutoGenerateColumns="False"
+                  Style="{StaticResource DataGridStyle}"
+                  Grid.Row="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="Col1"
+                                    Header="名前"
+                                    Binding="{Binding Name}" />
+                <DataGridTextColumn x:Name="Col2"
+                                    Header="名前"
+                                    Binding="{Binding Name}" />
+                <DataGridTextColumn x:Name="Col3"
+                                    Header="名前"
+                                    Binding="{Binding Name}" />
+                <DataGridTextColumn x:Name="Col4"
+                                    Header="名前"
+                                    Binding="{Binding Name}" />
+                <DataGridTextColumn x:Name="Col5"
+                                    Header="名前"
+                                    Binding="{Binding Name}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

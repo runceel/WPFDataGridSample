@@ -11,7 +11,7 @@ namespace WpfDataGridSampleApp.Models
 {
     public class Main : BindableBase
     {
-        private static int DataCount { get; } = 1000000;
+        private static int DataCount { get; } = 10000;
 
         public ObservableCollection<Scenario> Scenarios { get; } = new ObservableCollection<Scenario>(new[] 
         {
@@ -22,12 +22,13 @@ namespace WpfDataGridSampleApp.Models
             new Scenario { Name = "固定列ヘッダー", ViewName = "FrozenColumnCountView" },
             new Scenario { Name = "行詳細", ViewName = "RowDetailView" },
             new Scenario { Name = "パフォーマンス", ViewName = "LargeColumnPerformanceView" },
-            new Scenario { Name = "全選択無効化", ViewName = "DisableAllSelectView" },
             new Scenario { Name = "パフォーマンス(改善)", ViewName = "LargeColumnPerformanceImprovementView" },
+            new Scenario { Name = "全選択無効化", ViewName = "DisableAllSelectView" },
             new Scenario { Name = "UseLayoutRounding", ViewName = "UseLayoutRoundingView" },
             new Scenario { Name = "スタイリング", ViewName = "StylingView" },
             new Scenario { Name = "グルーピング", ViewName = "GroupingView" },
             new Scenario { Name = "グルーピング(改善?)", ViewName = "GroupingPerformanceImprovementView" },
+            new Scenario { Name = "複雑なヘッダー", ViewName = "ComplexHeaderView" },
             new Scenario { Name = "セル結合", ViewName = "MultiRowMultiColumnView" },
         });
 
