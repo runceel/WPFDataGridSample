@@ -107,7 +107,7 @@
                                     Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                 <DataGridTextColumn Header="年齢"
                                     Binding="{Binding Age, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                <DataGridTemplateColumn Header="年齢">
+                <DataGridTemplateColumn Header="性別">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding Gender, Converter={StaticResource GenderConverter}}" />
