@@ -115,7 +115,10 @@
     <Grid>
         <DataGrid ItemsSource="{Binding People}"
                   Style="{DynamicResource DataGridStyle}">
-
+            <DataGrid.InputBindings>
+                <KeyBinding Gesture="Ctrl+A"
+                            Command="{x:Static ApplicationCommands.NotACommand}" />
+            </DataGrid.InputBindings>
         </DataGrid>
     </Grid>
 </UserControl>
